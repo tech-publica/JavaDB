@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.dgs.sportClub.AbstractReservationDAO;
@@ -15,13 +17,17 @@ public class TestJDBC {
 		String jdbcPass= "sqlserver";
 
 		String jdbcURL 
-		= "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=SportClub_LAM";
+		= "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Olympia";
 
 		System.out.println("Connection to Database...");
 		try(Connection con = DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPass))
 		{
 			AbstractReservationDAO dao = new ReservationDAOJdbc(con);
-			Iterable<Reservation> res = dao.reservationByFieldAndTime(5, new Date(2019,7,1,0,0,0), new Date(2019,7,3,0,0,0));
+			LocalDateTime start = LocalDateTime.of(2019, 6, 1, 9,0);
+			LocalDateTime end =   LocalDateTime.of(2019, 6, 1, 22,0);
+			System.out.println(start);
+			System.out.println(end);
+			Iterable<Reservation> res = dao.reservationByFieldAndTime(5, start, end);
 			for(Reservation r: res) {
 				System.out.println(r.getIdPrenotazione()+ "  " + r.getIdCampo());
 			}

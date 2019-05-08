@@ -1,23 +1,42 @@
 package com.dgs.sportClub.domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Reservation {
 	private int idPrenotazione,idPersona,idCampo;
-	private Date dataPrenotazione;
+	private LocalDateTime dataInizio;
+	private LocalDateTime dataFine;
 	private String note;
 	private boolean lezione;
 	
-	public Reservation(int idPrenotazione, int idPersona, int idCampo, Date dataPrenotazione, String note,
+	public Reservation(int idPrenotazione, int idPersona, int idCampo, LocalDateTime dataInizio, LocalDateTime dataFine, String note,
 			boolean lezione) {
 		this.idPrenotazione = idPrenotazione;
 		this.idPersona = idPersona;
 		this.idCampo = idCampo;
-		this.dataPrenotazione = dataPrenotazione;
+		this.dataInizio = dataInizio;
+		this.dataFine = dataFine;
 		this.note = note;
 		this.lezione = lezione;
 	}
 	
+	public LocalDateTime getDataInizio() {
+		return dataInizio;
+	}
+
+	public void setDataInizio(LocalDateTime dataInizio) {
+		this.dataInizio = dataInizio;
+	}
+
+	public LocalDateTime getDataFine() {
+		return dataFine;
+	}
+
+	public void setDataFine(LocalDateTime dataFine) {
+		this.dataFine = dataFine;
+	}
+
 	public int getIdPrenotazione() {
 		return idPrenotazione;
 	}
@@ -36,12 +55,7 @@ public class Reservation {
 	public void setIdCampo(int idCampo) {
 		this.idCampo = idCampo;
 	}
-	public Date getDataPrenotazione() {
-		return dataPrenotazione;
-	}
-	public void setDataPrenotazione(Date dataPrenotazione) {
-		this.dataPrenotazione = dataPrenotazione;
-	}
+
 	public String getNote() {
 		return note;
 	}
